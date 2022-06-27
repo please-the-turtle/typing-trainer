@@ -5,7 +5,7 @@ using Moq;
 namespace TypingTrainingTests
 {
     [TestFixture]
-    public class TypingTrainerTests
+    public class StrongTypingTrainerTests
     {
         public static IEnumerable<TestCaseData> GetValidTypingTextsProviderTestCaseData()
         {
@@ -17,7 +17,7 @@ namespace TypingTrainingTests
         [TestCaseSource(nameof(GetValidTypingTextsProviderTestCaseData))]
         public void TestCreate_ValidTypingTextsProvider_Success(ITypingTextsProvider textsProvider)
         {
-            TypingTrainer trainer = TypingTrainer.Create(textsProvider);
+            StrongTypingTrainer trainer = new(textsProvider);
 
             Assert.NotNull(trainer);
         }
@@ -25,16 +25,44 @@ namespace TypingTrainingTests
         [Test]
         public void TestCreate_TypingTextsProviderIsNull_Exception()
         {
-            Assert.Throws<ArgumentNullException>(() => TypingTrainer.Create(null!));
+            Assert.Throws<ArgumentNullException>(() => new StrongTypingTrainer(null!));
         }
 
         public static IEnumerable<TestCaseData> GetValidTypingTrainerTestCaseData()
         {
             var textsProviderMock = new Mock<ITypingTextsProvider>();
             textsProviderMock.Setup(a => a.GetNextText()).Returns(TypingText.Create("te", "EN"));
-            TypingTrainer trainer = TypingTrainer.Create(textsProviderMock.Object);
+            StrongTypingTrainer trainer = new(textsProviderMock.Object);
 
             yield return new TestCaseData(trainer);
+        }
+
+        [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
+        public void TestCheckInputChar_TrainingIsPaused_ReturnFalse(TypingTrainer trainer)
+        {
+            bool checkResult = trainer.CheckInputChar('t');
+
+            Assert.IsFalse(checkResult);
+        }
+
+        [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
+        public void TestCheckInputChar_CorrectInuptChar_ReturnsTrue(TypingTrainer trainer)
+        {
+            trainer.Start();
+            bool checkResult = trainer.CheckInputChar('t');
+            trainer.Pause();
+
+            Assert.IsTrue(checkResult);
+        }
+
+        [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
+        public void TestCheckInputChar_NotCorrectInuptChar_ReturnsFalse(TypingTrainer trainer)
+        {
+            trainer.Start();
+            bool checkResult = trainer.CheckInputChar('-');
+            trainer.Pause();
+
+            Assert.IsFalse(checkResult);
         }
 
         [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
@@ -127,6 +155,8 @@ namespace TypingTrainingTests
         [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
         public void TestTypingSpeed_ValidTypingTrainer_CorrectTypingSpeed(TypingTrainer trainer)
         {
+            // speed = 1char / (50ms + 50ms + runtime error)
+
             trainer.Start();
             Thread.Sleep(50);
             trainer.CheckInputChar('t');
@@ -134,12 +164,15 @@ namespace TypingTrainingTests
             float speed = trainer.TypingSpeed;
             trainer.Pause();
 
-            Assert.Greater(speed, 0);
+            Assert.Positive(speed);
+            Assert.LessOrEqual(speed, 600);
         }
 
         [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
         public void TestTypingAccuracy_ValidTypingTrainer_CorrectTypingAccuracy(TypingTrainer trainer)
         {
+            // accuracy = 1 not correct char / 2 typed chars
+
             float actual = .5f;
 
             trainer.Start();
@@ -159,14 +192,6 @@ namespace TypingTrainingTests
             Assert.IsFalse(trainer.TrainingPaused);
             trainer.Pause();
             Assert.IsTrue(trainer.TrainingPaused);
-        }
-
-        [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
-        public void TestCheckInputChar_TrainingIsPaused_ReturnFalse(TypingTrainer trainer)
-        {
-            bool checkResult = trainer.CheckInputChar('t');
-
-            Assert.IsFalse(checkResult);
         }
     }
 }
