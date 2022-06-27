@@ -6,14 +6,11 @@ namespace TypingTraining.TypingTrainers
     /// <summary>
     /// Trainer of the keyboard typing.
     /// </summary>
-    public class TypingTrainer
+    public abstract class TypingTrainer
     {
         public event Action<TypingTrainer>? TypingTextChanged;
-
         public event Action<TypingTrainer>? TypingCursorPositionChanged;
-
         public event Action<TypingTrainer>? MissesNumberChanged;
-
         public event Action<TypingTrainer>? TypingCompleted;
 
         private ITypingTextsProvider _textsProvider;
@@ -24,29 +21,17 @@ namespace TypingTraining.TypingTrainers
         private bool _isPaused = true;
         private Stopwatch _typingTimer;
 
-        private TypingTrainer(ITypingTextsProvider textsProvider)
-        {
-            _textsProvider = textsProvider;
-            _typingTimer = new Stopwatch();
-        }
-
-        /// <summary>
-        /// Creates new instance of TypingTrainer.
-        /// </summary>
-        /// <param name="textsProvider">Provider of the texts for typing.</param>
-        /// <returns>New instance of TypingTrainer.</returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public static TypingTrainer Create(ITypingTextsProvider textsProvider)
+        public TypingTrainer(ITypingTextsProvider textsProvider)
         {
             if (textsProvider is null)
             {
                 throw new ArgumentNullException(nameof(textsProvider));
             }
 
-            TypingTrainer trainer = new(textsProvider);
-            trainer.ChangeTypingText();
+            _textsProvider = textsProvider;
+            _typingTimer = new Stopwatch();
 
-            return trainer;
+            ChangeTypingText();
         }
 
         /// <summary>
@@ -55,7 +40,7 @@ namespace TypingTraining.TypingTrainers
         public TypingText CurrentTypingText
         {
             get => _currentText;
-            private set
+            protected set
             {
                 _currentText = value;
                 TypingTextChanged?.Invoke(this);
@@ -68,7 +53,7 @@ namespace TypingTraining.TypingTrainers
         public int TypingCursorPosition
         {
             get => _cursorPosition;
-            private set
+            protected set
             {
                 _cursorPosition = value;
                 TypingCursorPositionChanged?.Invoke(this);
@@ -81,18 +66,28 @@ namespace TypingTraining.TypingTrainers
         public int MissesNumber
         {
             get => _missesNumber;
-            private set
+            protected set
             {
                 _missesNumber = value;
                 MissesNumberChanged?.Invoke(this);
             }
         }
 
+        /// <summary>
+        /// Typing speed in correct chars per minute.
+        /// </summary>
         public float TypingSpeed
         {
-            get => (float)(TypingCursorPosition / _typingTimer.Elapsed.TotalMinutes);
+            get
+            {
+                double elapsedMinutes = _typingTimer.Elapsed.TotalMinutes;
+                return (float)(TypingCursorPosition / elapsedMinutes);
+            }
         }
 
+        /// <summary>
+        /// Number of not correct typed chars divided by all typed chars.
+        /// </summary>
         public float TypingAccuracy
         {
             get => (float)MissesNumber / (MissesNumber + TypingCursorPosition);
@@ -106,48 +101,32 @@ namespace TypingTraining.TypingTrainers
         /// <summary>
         /// Starts the training.
         /// </summary>
-        public void Start()
+        public virtual void Start()
         {
             _isPaused = false;
             _typingTimer.Start();
         }
 
-        public void Pause()
+        public virtual void Pause()
         {
             _isPaused = true;
             _typingTimer.Stop();
         }
 
+        protected virtual void CompleteTraining()
+        {
+            TypingCompleted?.Invoke(this);
+            ChangeTypingText();
+        }
+
         /// <summary>
         /// Сhecks for a character that the user has entered from the keyboard.
-        /// If entered a valid character, moves typing cursor.
         /// </summary>
         /// <param name="input">Entered character.</param>
         /// <returns>
         /// True if user has entered a valid character and training not paused. False overwise.
         /// </returns>
-        public bool CheckInputChar(char input)
-        {
-            if (!_isPaused)
-            {
-                if (input != CurrentTypingText.Content[TypingCursorPosition])
-                {
-                    MissesNumber++;
-                    return false;
-                }
-
-                TypingCursorPosition++;
-                if (TypingCursorPosition >= CurrentTypingText.Content.Length)
-                {
-                    TypingCompleted?.Invoke(this);
-                    ChangeTypingText();
-                }
-
-                return true;
-            }
-
-            return false;
-        }
+        public abstract bool CheckInputChar(char input);
 
         /// <summary>
         /// Sets new typing text.
@@ -161,7 +140,7 @@ namespace TypingTraining.TypingTrainers
         /// <summary>
         /// Resets training progress.
         /// </summary>
-        public void ResetTraining()
+        public virtual void ResetTraining()
         {
             Pause();
             TypingCursorPosition = 0;
