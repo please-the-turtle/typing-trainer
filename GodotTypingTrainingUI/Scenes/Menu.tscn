@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/main_theme.theme" type="Theme" id=1]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fixedsys.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 6
+font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "sounds_mute"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
+theme = ExtResource( 1 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="ControlsPanel" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 306.5
+margin_right = 706.5
+margin_bottom = 600.0
+alignment = 1
+
+[node name="HelloUserLabel" type="Label" parent="ControlsPanel"]
+margin_top = 151.0
+margin_right = 400.0
+margin_bottom = 205.0
+custom_fonts/font = SubResource( 2 )
+text = "Hello, User!"
+align = 1
+valign = 1
+
+[node name="StartButton" type="Button" parent="ControlsPanel"]
+margin_top = 220.0
+margin_right = 400.0
+margin_bottom = 337.0
+rect_pivot_offset = Vector2( -524, -40 )
+shortcut_in_tooltip = false
+text = "Start"
+
+[node name="TextsOptionButton" type="OptionButton" parent="ControlsPanel"]
+margin_top = 352.0
+margin_right = 400.0
+margin_bottom = 389.0
+shortcut_in_tooltip = false
+text = "Select anything"
+
+[node name="SoundCheckButton" type="CheckButton" parent="ControlsPanel"]
+margin_top = 404.0
+margin_right = 400.0
+margin_bottom = 448.0
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 7 )
+text = "Enable sounds"
