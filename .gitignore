@@ -10,8 +10,6 @@ Parsing/bin
 ParsingConsoleUI/bin
 ParsingConsoleUI/obj
 GodotTypingTrainingUI/.import
-.mono
-GodotTypingTrainingUI/.mono
 DataAccess/bin
 DataAccess/obj
 DataAccessTests/bin
@@ -20,12 +18,11 @@ DataAccessTests/obj
 export.cfg
 export_presets.cfg
 *.translation
-.mono/
 data_*/
 GodotTypingTrainingUI/.import/
 GodotTypingTrainingUI/export.cfg
 GodotTypingTrainingUI/export_presets.cfg
 GodotTypingTrainingUI/*.translation
-GodotTypingTrainingUI/.mono/
 GodotTypingTrainingUI/data_*/
 GodotTypingTrainingUI/*.translation
+GodotTypingTrainingUI/.vscode

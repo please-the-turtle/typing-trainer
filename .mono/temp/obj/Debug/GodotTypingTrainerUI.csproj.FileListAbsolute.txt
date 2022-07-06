@@ -1,0 +1,15 @@
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.csproj.AssemblyReference.cache
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.GeneratedMSBuildEditorConfig.editorconfig
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.AssemblyInfoInputs.cache
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.AssemblyInfo.cs
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.csproj.CoreCompileInputs.cache
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\GodotTypingTrainerUI.deps.json
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\GodotTypingTrainerUI.dll
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\GodotTypingTrainerUI.pdb
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\Parsing.dll
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\TypingTraining.dll
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\TypingTraining.pdb
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\bin\Debug\Parsing.pdb
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.csproj.CopyComplete
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.dll
+A:\aleks\Documents\keyboard-trainer\GodotTypingTrainingUI\.mono\temp\obj\Debug\GodotTypingTrainerUI.pdb

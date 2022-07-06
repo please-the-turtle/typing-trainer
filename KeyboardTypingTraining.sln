@@ -11,10 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parsing", "Parsing\Parsing.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GodotTypingTrainerUI", "GodotTypingTrainingUI\GodotTypingTrainerUI.csproj", "{6FF35F69-9283-421F-9A98-368294B0B6EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A8492C0C-969D-4864-A983-F0F9AC8A6C11}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessTests", "DataAccessTests\DataAccessTests.csproj", "{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,22 +51,6 @@ Global
 		{6FF35F69-9283-421F-9A98-368294B0B6EA}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 		{6FF35F69-9283-421F-9A98-368294B0B6EA}.Release|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{6FF35F69-9283-421F-9A98-368294B0B6EA}.Release|Any CPU.Build.0 = ExportRelease|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.ExportRelease|Any CPU.ActiveCfg = Release|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8492C0C-969D-4864-A983-F0F9AC8A6C11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.ExportRelease|Any CPU.ActiveCfg = Release|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63878A72-8F9D-4E2A-ABE0-95A19E136AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

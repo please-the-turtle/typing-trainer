@@ -1,0 +1,193 @@
+{
+  "format": 1,
+  "restore": {
+    "A:\\aleks\\Documents\\keyboard-trainer\\GodotTypingTrainingUI\\GodotTypingTrainerUI.csproj": {}
+  },
+  "projects": {
+    "A:\\aleks\\Documents\\keyboard-trainer\\GodotTypingTrainingUI\\GodotTypingTrainerUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "A:\\aleks\\Documents\\keyboard-trainer\\GodotTypingTrainingUI\\GodotTypingTrainerUI.csproj",
+        "projectName": "GodotTypingTrainerUI",
+        "projectPath": "A:\\aleks\\Documents\\keyboard-trainer\\GodotTypingTrainingUI\\GodotTypingTrainerUI.csproj",
+        "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
+        "outputPath": "A:\\aleks\\Documents\\keyboard-trainer\\GodotTypingTrainingUI\\.mono\\temp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj": {
+                "projectPath": "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj"
+              },
+              "A:\\aleks\\Documents\\keyboard-trainer\\Parsing\\Parsing.csproj": {
+                "projectPath": "A:\\aleks\\Documents\\keyboard-trainer\\Parsing\\Parsing.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj",
+        "projectName": "TypingTraining",
+        "projectPath": "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj",
+        "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
+        "outputPath": "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "A:\\aleks\\Documents\\keyboard-trainer\\Parsing\\Parsing.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "A:\\aleks\\Documents\\keyboard-trainer\\Parsing\\Parsing.csproj",
+        "projectName": "Parsing",
+        "projectPath": "A:\\aleks\\Documents\\keyboard-trainer\\Parsing\\Parsing.csproj",
+        "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
+        "outputPath": "A:\\aleks\\Documents\\keyboard-trainer\\Parsing\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj": {
+                "projectPath": "A:\\aleks\\Documents\\keyboard-trainer\\KeyboardTrainer\\TypingTraining.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "AngleSharp": {
+              "target": "Package",
+              "version": "[0.17.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

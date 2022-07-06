@@ -12,7 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\KeyboardTrainer\TypingTraining.csproj" />
+	  <ProjectReference Include="..\KeyboardTrainer\TypingTraining.csproj" />
 	</ItemGroup>
 
 </Project>
