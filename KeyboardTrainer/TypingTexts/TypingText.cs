@@ -1,4 +1,6 @@
-﻿namespace TypingTraining.TypingTexts
+﻿using System;
+
+namespace TypingTraining.TypingTexts
 {
     public class TypingText
     {

@@ -47,14 +47,10 @@ namespace Parsing
             }
         }
 
-        public ParserWorker(IParser<T> parser)
+        public ParserWorker(IParser<T> parser, IParserSettings parserSettings)
         {
-            Parser = parser;
-        }
-
-        public ParserWorker(IParser<T> parser, IParserSettings parserSettings) : this(parser)
-        {
-            Settings = parserSettings;
+            Parser = parser ?? throw new ArgumentNullException(nameof(parser));
+            Settings = parserSettings ?? throw new ArgumentNullException(nameof(parserSettings));
         }
 
         public void Start()

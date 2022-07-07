@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypingTrainingTests", "Typi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parsing", "Parsing\Parsing.csproj", "{360618AD-781D-498D-966E-F41092AFCE48}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GodotTypingTrainerUI", "GodotTypingTrainingUI\GodotTypingTrainerUI.csproj", "{6FF35F69-9283-421F-9A98-368294B0B6EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParsingConsoleUI", "ParsingConsoleUI\ParsingConsoleUI.csproj", "{B9452CEF-B7DA-4848-BDCD-30C70548943B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +43,14 @@ Global
 		{360618AD-781D-498D-966E-F41092AFCE48}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
 		{360618AD-781D-498D-966E-F41092AFCE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360618AD-781D-498D-966E-F41092AFCE48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.Release|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{6FF35F69-9283-421F-9A98-368294B0B6EA}.Release|Any CPU.Build.0 = ExportRelease|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.ExportRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9452CEF-B7DA-4848-BDCD-30C70548943B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
