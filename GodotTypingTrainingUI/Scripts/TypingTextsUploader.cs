@@ -1,5 +1,6 @@
 using Parsing;
 using Parsing.Jokes;
+using Parsing.JacqueFresco;
 using System.Collections.Generic;
 using TypingTraining.TypingTexts;
 
@@ -7,11 +8,11 @@ namespace GodotTypingTrainerUI.Scripts
 {
     public class TypingTextsUploader
     {
-        private Dictionary<string, IParser<TypingText[]>> _textsParsers;
+        private List<TypingTextParsingSetup> _textParsingSetups;
 
         public TypingTextsUploader()
         {
-            _textsParsers = ConfigureTextParsers();
+            _textParsingSetups = ConfigureParsingSetups();
         }
 
         /// <summary>
@@ -24,12 +25,12 @@ namespace GodotTypingTrainerUI.Scripts
             ParserWorker<TypingText[]> parserWorker;
             List<TypingText> parsedTexts = new();
 
-            foreach (var parser in _textsParsers)
+            foreach (var setup in _textParsingSetups)
             {
-                parserWorker = new(parser.Value);
+                parserWorker = new(setup.Parser, setup.ParserSettings);
                 parsedTexts.Clear();
                 parserWorker.OnNewData += (o, t) => parsedTexts.AddRange(t);
-                string filePath = $"{uploadPath}/{parser.Key}{filesExtension}";
+                string filePath = $"{uploadPath}/{setup.FileName}{filesExtension}";
                 parserWorker.OnCompleted += (o) => SaveParsedTexts(filePath, parsedTexts);
                 parserWorker.Start();
             }
@@ -40,16 +41,25 @@ namespace GodotTypingTrainerUI.Scripts
             if (parsedTexts is not null && parsedTexts.Count != 0)
             {
                 GodotDataSaver saver = new(filePath);
-                saver.TrySaveData(parsedTexts);
+                var b= saver.TrySaveData(parsedTexts);
             }
         }
 
-        private Dictionary<string, IParser<TypingText[]>> ConfigureTextParsers()
+        private List<TypingTextParsingSetup> ConfigureParsingSetups()
         {
-            Dictionary<string, IParser<TypingText[]>> parsers = new();
+            List<TypingTextParsingSetup> parsers = new();
 
-            JokesParser jokesParser = new();
-            parsers.Add("[RU] Jokes (not fun)", jokesParser);
+            TypingTextParsingSetup jokes = new(
+                "[RU] Jokes (not fun)",
+                new JokesParser(),
+                new JokesParserSettings());
+            parsers.Add(jokes);
+
+            TypingTextParsingSetup fresco = new(
+                "[RU] Jacque Fresco quotes",
+                new JacqueFrescoParser(),
+                new JacqueFrescoParserSettings()
+            );
 
             return parsers;
         }

@@ -23,8 +23,11 @@ atlas = ExtResource( 1 )
 region = Rect2( 31, 192, 34, 34 )
 
 [node name="Loading" type="Control"]
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = -512.0
+margin_right = 512.0
 theme = ExtResource( 2 )
 script = ExtResource( 4 )
 
@@ -33,26 +36,29 @@ reset_on_save = false
 anims/LoadingAnimation = SubResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 478.0
-margin_top = 480.0
-margin_right = -478.0
-margin_bottom = -52.0
+margin_left = -34.0
+margin_top = -124.0
+margin_right = 34.0
+margin_bottom = -56.0
 rect_min_size = Vector2( 68, 68 )
-rect_rotation = -4.29289
 rect_pivot_offset = Vector2( 34, 34 )
 texture = SubResource( 1 )
 expand = true
 stretch_mode = 5
 
 [node name="LoadingLabel" type="Label" parent="."]
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 432.0
-margin_top = 548.0
-margin_right = -392.0
-margin_bottom = 28.0
+margin_left = -84.0
+margin_top = -57.0
+margin_right = 116.0
+margin_bottom = 23.0
 rect_pivot_offset = Vector2( 100, 0 )
 text = "Loading...
 "

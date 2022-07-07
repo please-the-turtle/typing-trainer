@@ -43,7 +43,29 @@ namespace GodotTypingTrainerUI.Scripts
             }
         }
 
+        public int LastTypingTextsIndex 
+        {
+            get => _lastTypingTextsIndex;
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("LastTypingTexts greater than zero.", nameof(value));
+                }
+
+                if (_lastTypingTextsIndex != value)
+                {
+                    _isSettingsChanged = true;
+                }
+
+                _lastTypingTextsIndex = value;
+            }
+        }
+
         public bool IsSettingsChanged => _isSettingsChanged;
+
+        [JsonProperty("lastTypingTexts")]
+        private int _lastTypingTextsIndex;
 
         [JsonProperty("soundsEnabled")]
         private bool _isSoundsEnabled = true;
