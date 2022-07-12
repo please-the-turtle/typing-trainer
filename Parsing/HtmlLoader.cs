@@ -22,7 +22,7 @@ namespace Parsing
             {
                 response = await client.GetAsync(currentUrl);
             }
-            catch(HttpRequestException e)
+            catch(HttpRequestException)
             {
                 return string.Empty;
             }

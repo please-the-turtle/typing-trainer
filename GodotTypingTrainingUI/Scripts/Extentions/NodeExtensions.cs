@@ -1,6 +1,7 @@
 ﻿using Godot;
+using GodotTypingTrainerUI.Scripts.Globals;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Extentions
 {
     public static class NodeExtensions
     {

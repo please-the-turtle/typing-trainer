@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Godot;
+using GodotTypingTrainerUI.Scripts.Extentions;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Menu
 {
     public class TextsOptionButton : OptionButton
     {
@@ -14,7 +15,7 @@ namespace GodotTypingTrainerUI.Scripts
         private void UpdateItems()
         {
             Clear();
-            
+
             foreach (var item in GetItems())
             {
                 AddItem(item);

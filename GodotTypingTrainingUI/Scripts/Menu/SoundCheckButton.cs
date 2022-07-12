@@ -1,6 +1,7 @@
 using Godot;
+using GodotTypingTrainerUI.Scripts.Extentions;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Menu
 {
     public class SoundCheckButton : CheckButton
     {

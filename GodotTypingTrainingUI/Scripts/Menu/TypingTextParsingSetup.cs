@@ -1,7 +1,7 @@
 ﻿using Parsing;
 using TypingTraining.TypingTexts;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Menu
 {
     public class TypingTextParsingSetup
     {

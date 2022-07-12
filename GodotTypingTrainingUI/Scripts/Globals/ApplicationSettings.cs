@@ -1,12 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Globals
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class ApplicationSettings
     {
         public const string SettingsPath = "user://settings.save";
+        public const string UserStatisticsPath = "user://statistics.save";
 
         public string TypingTextsExtention => ".type";
 
@@ -43,7 +44,7 @@ namespace GodotTypingTrainerUI.Scripts
             }
         }
 
-        public int LastTypingTextsIndex 
+        public int LastTypingTextsIndex
         {
             get => _lastTypingTextsIndex;
             set
@@ -65,7 +66,7 @@ namespace GodotTypingTrainerUI.Scripts
         public bool IsSettingsChanged => _isSettingsChanged;
 
         [JsonProperty("lastTypingTexts")]
-        private int _lastTypingTextsIndex;
+        private int _lastTypingTextsIndex = 0;
 
         [JsonProperty("soundsEnabled")]
         private bool _isSoundsEnabled = true;

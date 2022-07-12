@@ -3,8 +3,9 @@ using Parsing.Jokes;
 using Parsing.JacqueFresco;
 using System.Collections.Generic;
 using TypingTraining.TypingTexts;
+using GodotTypingTrainerUI.Scripts.Globals;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Menu
 {
     public class TypingTextsUploader
     {
@@ -41,7 +42,7 @@ namespace GodotTypingTrainerUI.Scripts
             if (parsedTexts is not null && parsedTexts.Count != 0)
             {
                 GodotDataSaver saver = new(filePath);
-                var b= saver.TrySaveData(parsedTexts);
+                var b = saver.TrySaveData(parsedTexts);
             }
         }
 

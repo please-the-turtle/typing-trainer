@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/main_theme.theme" type="Theme" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/MenuScene.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/Menu/MenuScene.cs" type="Script" id=3]
 [ext_resource path="res://Assets/Fixedsys.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scenes/Loading.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/SettingsPanel.cs" type="Script" id=6]
-[ext_resource path="res://Scripts/SoundCheckButton.cs" type="Script" id=7]
-[ext_resource path="res://Scripts/TextsOptionButton.cs" type="Script" id=8]
+[ext_resource path="res://Scripts/Menu/SettingsPanel.cs" type="Script" id=6]
+[ext_resource path="res://Scripts/Menu/SoundCheckButton.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/Menu/TextsOptionButton.cs" type="Script" id=8]
 [ext_resource path="res://Assets/big_button_theme.theme" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=2]
@@ -15,6 +15,12 @@ size = 48
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 6
 font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -29,7 +35,7 @@ margin_bottom = 0.0
 [node name="Loading" parent="." instance=ExtResource( 5 )]
 visible = false
 
-[node name="ControlsPanel" type="VBoxContainer" parent="."]
+[node name="ControlsContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -40,7 +46,7 @@ margin_right = 200.0
 margin_bottom = 300.0
 alignment = 1
 
-[node name="HelloUserLabel" type="Label" parent="ControlsPanel"]
+[node name="HelloUserLabel" type="Label" parent="ControlsContainer"]
 margin_top = 165.0
 margin_right = 400.0
 margin_bottom = 219.0
@@ -49,16 +55,17 @@ text = "Hello, User!"
 align = 1
 valign = 1
 
-[node name="StartButton" type="Button" parent="ControlsPanel"]
+[node name="StartButton" type="Button" parent="ControlsContainer"]
 margin_top = 234.0
 margin_right = 400.0
 margin_bottom = 331.0
 rect_pivot_offset = Vector2( -524, -40 )
 theme = ExtResource( 9 )
 shortcut_in_tooltip = false
+shortcut = SubResource( 4 )
 text = "Start"
 
-[node name="TextsOptionButton" type="OptionButton" parent="ControlsPanel"]
+[node name="TextsOptionButton" type="OptionButton" parent="ControlsContainer"]
 margin_top = 346.0
 margin_right = 400.0
 margin_bottom = 383.0
@@ -67,7 +74,7 @@ text = "No one loaded"
 clip_text = true
 script = ExtResource( 8 )
 
-[node name="SettingsButton" type="Button" parent="ControlsPanel"]
+[node name="SettingsButton" type="Button" parent="ControlsContainer"]
 margin_top = 398.0
 margin_right = 400.0
 margin_bottom = 435.0
@@ -100,22 +107,27 @@ rect_min_size = Vector2( 400, 320 )
 alignment = 1
 
 [node name="SoundCheckButton" type="CheckButton" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 86.0
+margin_top = 74.0
 margin_right = 400.0
-margin_bottom = 130.0
+margin_bottom = 118.0
 text = "Enable sound"
 script = ExtResource( 7 )
 
-[node name="UpdateTextsButton" type="Button" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 145.0
+[node name="HSeparator" type="HSeparator" parent="SettingsPanel/GridContainer/VBoxContainer"]
+margin_top = 133.0
 margin_right = 400.0
-margin_bottom = 182.0
+margin_bottom = 141.0
+
+[node name="UpdateTextsButton" type="Button" parent="SettingsPanel/GridContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 400.0
+margin_bottom = 193.0
 text = "Update texts"
 
 [node name="OpenTextsFolderButton" type="Button" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 197.0
+margin_top = 208.0
 margin_right = 400.0
-margin_bottom = 234.0
+margin_bottom = 245.0
 text = "Open texts folder"
 
 [node name="CloseButton" type="Button" parent="SettingsPanel"]
@@ -134,9 +146,9 @@ text = "Settings"
 align = 1
 valign = 1
 
-[connection signal="pressed" from="ControlsPanel/StartButton" to="." method="StartTrainingAsync"]
-[connection signal="pressed" from="ControlsPanel/SettingsButton" to="." method="ShowSettings"]
-[connection signal="TypingTextsUpdated" from="SettingsPanel" to="ControlsPanel/TextsOptionButton" method="UpdateItems"]
+[connection signal="pressed" from="ControlsContainer/StartButton" to="." method="StartTrainingAsync"]
+[connection signal="pressed" from="ControlsContainer/SettingsButton" to="." method="ShowSettings"]
+[connection signal="TypingTextsUpdated" from="SettingsPanel" to="ControlsContainer/TextsOptionButton" method="UpdateItems"]
 [connection signal="hide" from="SettingsPanel" to="." method="OnSettingsPanel_hide"]
 [connection signal="pressed" from="SettingsPanel/GridContainer/VBoxContainer/SoundCheckButton" to="SettingsPanel/GridContainer/VBoxContainer/SoundCheckButton" method="OnPressed"]
 [connection signal="pressed" from="SettingsPanel/GridContainer/VBoxContainer/UpdateTextsButton" to="SettingsPanel" method="OnUpdateTextsButton_pressed"]

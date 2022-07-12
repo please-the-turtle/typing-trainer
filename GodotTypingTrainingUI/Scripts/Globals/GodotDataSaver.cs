@@ -1,16 +1,15 @@
 ﻿using Godot;
-using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json;
 
-namespace GodotTypingTrainerUI.Scripts
+namespace GodotTypingTrainerUI.Scripts.Globals
 {
     /// <summary>
-    /// Loads data with godot File library.
+    /// Saves data with godot File library.
     /// </summary>
-    /// <typeparam name="T">Type of the loaded data.</typeparam>
-    public class GodotDataLoader<T>
+    public class GodotDataSaver
     {
-        public GodotDataLoader(string filePath)
+        public GodotDataSaver(string filePath)
         {
             JsonFilePath = filePath;
         }
@@ -30,36 +29,30 @@ namespace GodotTypingTrainerUI.Scripts
             }
         }
 
-        private string _filePath = null!;
+        private string _filePath;
 
-        public T LoadData()
+        public void SaveData(object data)
         {
-            T obj = default;
             File file = new File();
-
-            Error error = file.Open(_filePath, File.ModeFlags.Read);
-
+            Error error = file.Open(_filePath, File.ModeFlags.Write);
             if (error != Error.Ok)
             {
                 throw new Exception($"Failed to open file. Path: {_filePath}. Error: {error}");
             }
 
-            string json = file.GetAsText();
-            obj = JsonConvert.DeserializeObject<T>(json);
+            string json = JsonConvert.SerializeObject(data);
+            file.StoreLine(json);
             file.Close();
-
-            return obj;
         }
 
-        public bool TryLoadData(out T loadedData)
+        public bool TrySaveData(object data)
         {
             try
             {
-                loadedData = LoadData();
+                SaveData(data);
             }
             catch
             {
-                loadedData = default;
                 return false;
             }
 
