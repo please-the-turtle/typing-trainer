@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TypingTraining.TypingTexts
 {
     public class TypingText
     {
+        [JsonConstructor]
         private TypingText(string content, string languageName)
         {
             Content = content;
