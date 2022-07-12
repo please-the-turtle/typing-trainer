@@ -8,7 +8,7 @@ namespace TypingTraining.TypingTrainers
 
         public override bool CheckInputChar(char input)
         {
-            if (!TrainingPaused)
+            if (!IsTrainingPaused)
             {
                 if (input != CurrentTypingText.Content[TypingCursorPosition])
                 {

@@ -82,19 +82,35 @@ namespace TypingTraining.TypingTrainers
             get
             {
                 double elapsedMinutes = _typingTimer.Elapsed.TotalMinutes;
+
+                if (elapsedMinutes == 0)
+                {
+                    return 0;
+                }
+
                 return (float)(TypingCursorPosition / elapsedMinutes);
             }
         }
 
         /// <summary>
-        /// Number of not correct typed chars divided by all typed chars.
+        /// Number of correct typed chars divided by all typed chars.
         /// </summary>
         public float TypingAccuracy
         {
-            get => (float)MissesNumber / (MissesNumber + TypingCursorPosition);
+            get
+            {
+                int allTypedChars = MissesNumber + TypingCursorPosition;
+                
+                if (allTypedChars == 0)
+                {
+                    return 0;
+                }
+
+                return (float)TypingCursorPosition / (allTypedChars);
+            }
         }
 
-        public bool TrainingPaused
+        public bool IsTrainingPaused
         {
             get => _isPaused;
         }
