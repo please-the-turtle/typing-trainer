@@ -88,48 +88,6 @@ namespace GodotTypingTrainerUI.Scripts.Globals
             return _parameters.FirstOrDefault(p => p.ParameterName == parameterName);
         }
 
-        // private ApplicationSettings LoadApplicationSettings()
-        // {
-        //     ApplicationSettings settings;
-        //     File settingsFile = new File();
-
-        //     if (!settingsFile.FileExists(ApplicationSettings.SettingsPath))
-        //     {
-        //         var saver = new GodotDataSaver(ApplicationSettings.SettingsPath);
-        //         settings = new ApplicationSettings();
-        //         saver.SaveData(settings);
-        //     }
-
-        //     var loader = new GodotDataLoader<ApplicationSettings>(ApplicationSettings.SettingsPath);
-        //     if (!loader.TryLoadData(out settings) || settings is null)
-        //     {
-        //         settings = new ApplicationSettings();
-        //     }
-
-        //     return settings;
-        // }
-
-        // private UserStatistics LoadUserStatistics()
-        // {
-        //     UserStatistics statistics;
-        //     File statisticsFile = new File();
-
-        //     if (!statisticsFile.FileExists(ApplicationSettings.UserStatisticsPath))
-        //     {
-        //         var saver = new GodotDataSaver(ApplicationSettings.UserStatisticsPath);
-        //         statistics = new UserStatistics();
-        //         saver.SaveData(statistics);
-        //     }
-
-        //     var loader = new GodotDataLoader<UserStatistics>(ApplicationSettings.UserStatisticsPath);
-        //     if (!loader.TryLoadData(out statistics) || statistics is null)
-        //     {
-        //         statistics = new UserStatistics();
-        //     }
-
-        //     return statistics;
-        // }
-
         private T LoadOrCreateNew<T>(string filePath) where T : new()
         {
             T item;

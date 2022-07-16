@@ -8,7 +8,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
     public class TrainerScene : Node
     {
         private TypingTrainer _trainer;
-        private int _scrollingCharsNumber = 70;
+        private int _scrollingCharsNumber = 60;
         private int _charactersToScroll;
 
         private TextEdit _typingTextView;
@@ -19,7 +19,8 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
 
         public override void _Ready()
         {
-            _trainer = this.GetGlobal().GetGlobalParameterValue<TypingTrainer>("trainer");
+            var global = this.GetGlobal();
+            _trainer = global.GetGlobalParameterValue<TypingTrainer>("trainer");
 
             if (_trainer is null)
             {
@@ -34,6 +35,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
 
             _typingTextView = GetNode<TextEdit>("TextPanel/TypingTextView");
             _typingTextView.Text = _trainer.CurrentTypingText.Content;
+            _typingTextView.DrawSpaces = global.ApplicationSettings.DrawSpaces;
             _pausePanel = GetNode<PausePanel>("PausePanel");
             _completedPanel = GetNode<CompletedPanel>("CompletedPanel");
             _infoContainer = GetNode<TypingInfoContainer>("TypingInfoContainer");
@@ -72,6 +74,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
 
         private void PauseTraining()
         {
+            _helperLabel.Visible = true;
             _trainer.Pause();
             _pausePanel.Open();
         }
@@ -95,10 +98,10 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
 
         private async void OnTypingCompleted(object sender)
         {
-            _completedPanel.Open(_trainer.TypingSpeed, _trainer.TypingAccuracy);
-            
             UpdateTotalAccuracyStatistics();
             UpdateTotalSpeedStatistics();
+
+            _completedPanel.Open(_trainer.TypingSpeed, _trainer.TypingAccuracy);
 
             await this.GetGlobal().SaveUserStatisticsAsync();
         }

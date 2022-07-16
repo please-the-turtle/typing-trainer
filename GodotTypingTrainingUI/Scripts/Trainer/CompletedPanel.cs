@@ -10,12 +10,16 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         private Label _accuracyLabel;
         private Label _totalAccuracyLabel;
 
+        private AnimationPlayer _animationPlayer;
+
         public override void _Ready()
         {
             _speedLabel = GetNode<Label>("InfoContainer/SpeedLabel");
             _totalSpeedLabel = GetNode<Label>("InfoContainer/TotalSpeedLabel");
             _accuracyLabel = GetNode<Label>("InfoContainer/AccuracyLabel");
             _totalAccuracyLabel = GetNode<Label>("InfoContainer/TotalAccuracyLabel");
+
+            _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
             Hide();
         }
@@ -27,12 +31,12 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
             UpdateAccuracyInfo(accuracy);
             UpdateTotalAccuracyInfo();
 
-            Show();
+           _animationPlayer.Play("Open");
         }
 
         public void Close()
         {
-            Hide();
+            _animationPlayer.Play("Close");
         }
 
         private void UpdateSpeedInfo(float speed)
@@ -61,7 +65,6 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
 
         private void GotoMenu()
         {
-            Close();
             this.GetGlobal().GotoScene("res://Scenes/Menu.tscn");
         }
     }

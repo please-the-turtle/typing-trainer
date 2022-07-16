@@ -26,6 +26,7 @@ namespace Parsing
             {
                 return string.Empty;
             }
+
             string source = null!;
 
             if (response != null && response.StatusCode == HttpStatusCode.OK)

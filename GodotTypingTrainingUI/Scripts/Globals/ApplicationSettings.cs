@@ -44,6 +44,20 @@ namespace GodotTypingTrainerUI.Scripts.Globals
             }
         }
 
+        public bool DrawSpaces
+        {
+            get => _drawSpaces;
+            set
+            {
+                if (_drawSpaces != value)
+                {
+                    _isSettingsChanged = true;
+                }
+
+                _drawSpaces = value;
+            }
+        }
+
         public int LastTypingTextsIndex
         {
             get => _lastTypingTextsIndex;
@@ -73,6 +87,9 @@ namespace GodotTypingTrainerUI.Scripts.Globals
 
         [JsonProperty("textsPath")]
         private string _textsPath = "user://texts";
+
+        [JsonProperty("drawSpaces")]
+        private bool _drawSpaces = true;
 
         private bool _isSettingsChanged = false;
     }

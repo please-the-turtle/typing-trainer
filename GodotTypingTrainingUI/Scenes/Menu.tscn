@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/main_theme.theme" type="Theme" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Scripts/Menu/SoundCheckButton.cs" type="Script" id=7]
 [ext_resource path="res://Scripts/Menu/TextsOptionButton.cs" type="Script" id=8]
 [ext_resource path="res://Assets/big_button_theme.theme" type="Theme" id=9]
+[ext_resource path="res://Scripts/Menu/StatisticsPanel.cs" type="Script" id=10]
+[ext_resource path="res://Scenes/PanelsAnimationPlayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Menu/DrawSpacesCheckButton.cs" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
@@ -21,6 +24,18 @@ action = "ui_select"
 
 [sub_resource type="ShortCut" id=4]
 shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventAction" id=9]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -47,18 +62,18 @@ margin_bottom = 300.0
 alignment = 1
 
 [node name="HelloUserLabel" type="Label" parent="ControlsContainer"]
-margin_top = 165.0
+margin_top = 139.0
 margin_right = 400.0
-margin_bottom = 219.0
+margin_bottom = 193.0
 custom_fonts/font = SubResource( 2 )
 text = "Hello, User!"
 align = 1
 valign = 1
 
 [node name="StartButton" type="Button" parent="ControlsContainer"]
-margin_top = 234.0
+margin_top = 208.0
 margin_right = 400.0
-margin_bottom = 331.0
+margin_bottom = 305.0
 rect_pivot_offset = Vector2( -524, -40 )
 theme = ExtResource( 9 )
 shortcut_in_tooltip = false
@@ -66,21 +81,28 @@ shortcut = SubResource( 4 )
 text = "Start"
 
 [node name="TextsOptionButton" type="OptionButton" parent="ControlsContainer"]
-margin_top = 346.0
+margin_top = 320.0
 margin_right = 400.0
-margin_bottom = 383.0
+margin_bottom = 357.0
 shortcut_in_tooltip = false
 text = "No one loaded"
 clip_text = true
 script = ExtResource( 8 )
 
-[node name="SettingsButton" type="Button" parent="ControlsContainer"]
-margin_top = 398.0
+[node name="StatisticsButton" type="Button" parent="ControlsContainer"]
+margin_top = 372.0
 margin_right = 400.0
-margin_bottom = 435.0
+margin_bottom = 409.0
+text = "Statistics"
+
+[node name="SettingsButton" type="Button" parent="ControlsContainer"]
+margin_top = 424.0
+margin_right = 400.0
+margin_bottom = 461.0
 text = "Settings"
 
 [node name="SettingsPanel" type="Panel" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -89,9 +111,13 @@ margin_left = -220.0
 margin_top = -250.0
 margin_right = 220.0
 margin_bottom = 250.0
+rect_pivot_offset = Vector2( 220, 250 )
 script = ExtResource( 6 )
 
-[node name="GridContainer" type="ScrollContainer" parent="SettingsPanel"]
+[node name="AnimationPlayer" parent="SettingsPanel" instance=ExtResource( 11 )]
+script = null
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -100,34 +126,41 @@ margin_right = -20.0
 margin_bottom = -80.0
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/GridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/ScrollContainer"]
 margin_right = 400.0
 margin_bottom = 320.0
 rect_min_size = Vector2( 400, 320 )
 alignment = 1
 
-[node name="SoundCheckButton" type="CheckButton" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 74.0
+[node name="DrawSpacesCheckButton" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 45.0
 margin_right = 400.0
-margin_bottom = 118.0
+margin_bottom = 89.0
+text = "Draw spaces"
+script = ExtResource( 13 )
+
+[node name="SoundCheckButton" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 400.0
+margin_bottom = 148.0
 text = "Enable sound"
 script = ExtResource( 7 )
 
-[node name="HSeparator" type="HSeparator" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 133.0
+[node name="Separator" type="HSeparator" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 163.0
 margin_right = 400.0
-margin_bottom = 141.0
+margin_bottom = 171.0
 
-[node name="UpdateTextsButton" type="Button" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 156.0
+[node name="UpdateTextsButton" type="Button" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 186.0
 margin_right = 400.0
-margin_bottom = 193.0
+margin_bottom = 223.0
 text = "Update texts"
 
-[node name="OpenTextsFolderButton" type="Button" parent="SettingsPanel/GridContainer/VBoxContainer"]
-margin_top = 208.0
+[node name="OpenTextsFolderButton" type="Button" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 238.0
 margin_right = 400.0
-margin_bottom = 245.0
+margin_bottom = 275.0
 text = "Open texts folder"
 
 [node name="CloseButton" type="Button" parent="SettingsPanel"]
@@ -137,6 +170,8 @@ margin_left = 299.0
 margin_top = 432.0
 margin_right = -15.0
 margin_bottom = -31.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 8 )
 text = "Close"
 
 [node name="Title" type="Label" parent="SettingsPanel"]
@@ -146,11 +181,75 @@ text = "Settings"
 align = 1
 valign = 1
 
+[node name="StatisticsPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -250.0
+margin_right = 220.0
+margin_bottom = 250.0
+rect_pivot_offset = Vector2( 220, 250 )
+script = ExtResource( 10 )
+
+[node name="AnimationPlayer" parent="StatisticsPanel" instance=ExtResource( 11 )]
+script = null
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatisticsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 100.0
+margin_right = -20.0
+margin_bottom = -80.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatisticsPanel/ScrollContainer"]
+margin_right = 400.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 400, 320 )
+alignment = 1
+
+[node name="SpeedLabel" type="Label" parent="StatisticsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 115.0
+margin_right = 400.0
+margin_bottom = 152.0
+text = "AVG speed: 0 ch/min"
+
+[node name="AccuracyLabel" type="Label" parent="StatisticsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 167.0
+margin_right = 400.0
+margin_bottom = 204.0
+text = "AVG accuracy: 0%"
+
+[node name="CloseButton" type="Button" parent="StatisticsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 299.0
+margin_top = 432.0
+margin_right = -15.0
+margin_bottom = -31.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 10 )
+text = "Close"
+
+[node name="Title" type="Label" parent="StatisticsPanel"]
+anchor_right = 1.0
+margin_bottom = 100.0
+text = "Statistics"
+align = 1
+valign = 1
+
 [connection signal="pressed" from="ControlsContainer/StartButton" to="." method="StartTrainingAsync"]
+[connection signal="pressed" from="ControlsContainer/StatisticsButton" to="StatisticsPanel" method="Open"]
 [connection signal="pressed" from="ControlsContainer/SettingsButton" to="." method="ShowSettings"]
 [connection signal="TypingTextsUpdated" from="SettingsPanel" to="ControlsContainer/TextsOptionButton" method="UpdateItems"]
 [connection signal="hide" from="SettingsPanel" to="." method="OnSettingsPanel_hide"]
-[connection signal="pressed" from="SettingsPanel/GridContainer/VBoxContainer/SoundCheckButton" to="SettingsPanel/GridContainer/VBoxContainer/SoundCheckButton" method="OnPressed"]
-[connection signal="pressed" from="SettingsPanel/GridContainer/VBoxContainer/UpdateTextsButton" to="SettingsPanel" method="OnUpdateTextsButton_pressed"]
-[connection signal="pressed" from="SettingsPanel/GridContainer/VBoxContainer/OpenTextsFolderButton" to="SettingsPanel" method="OpenTextsFolder"]
+[connection signal="pressed" from="SettingsPanel/ScrollContainer/VBoxContainer/DrawSpacesCheckButton" to="SettingsPanel/ScrollContainer/VBoxContainer/DrawSpacesCheckButton" method="OnPressed"]
+[connection signal="pressed" from="SettingsPanel/ScrollContainer/VBoxContainer/SoundCheckButton" to="SettingsPanel/ScrollContainer/VBoxContainer/SoundCheckButton" method="OnPressed"]
+[connection signal="pressed" from="SettingsPanel/ScrollContainer/VBoxContainer/UpdateTextsButton" to="SettingsPanel" method="OnUpdateTextsButton_pressed"]
+[connection signal="pressed" from="SettingsPanel/ScrollContainer/VBoxContainer/OpenTextsFolderButton" to="SettingsPanel" method="OpenTextsFolder"]
 [connection signal="pressed" from="SettingsPanel/CloseButton" to="SettingsPanel" method="Close"]
+[connection signal="pressed" from="StatisticsPanel/CloseButton" to="StatisticsPanel" method="Close"]

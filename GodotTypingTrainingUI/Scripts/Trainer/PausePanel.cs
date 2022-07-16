@@ -5,24 +5,27 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
 {
     public class PausePanel : Panel
     {
+        private AnimationPlayer _animationPlayer;
+
         public override void _Ready()
         {
+            _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
             Hide();
         }
 
         public void Open()
         {
-            Show();
+            _animationPlayer.Play("Open");
         }
 
         public void Close()
         {
-            Hide();
+            _animationPlayer.Play("Close");
         }
-
+        
         private void GotoMenu()
         {
-            Close();
             this.GetGlobal().GotoScene("res://Scenes/Menu.tscn");
         }
     }

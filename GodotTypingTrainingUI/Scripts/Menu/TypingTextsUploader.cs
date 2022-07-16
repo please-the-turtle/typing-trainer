@@ -46,6 +46,9 @@ namespace GodotTypingTrainerUI.Scripts.Menu
             }
         }
 
+        // Godot 3 don't supports tls1.3. 
+        // All https pages with tls1.3 won't parse!
+        // The solution of this problem is postponed until the transition to Godot 4 mono.
         private List<TypingTextParsingSetup> ConfigureParsingSetups()
         {
             List<TypingTextParsingSetup> parsers = new();

@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
 using Godot;
 using GodotTypingTrainerUI.Scripts.Extentions;
 using GodotTypingTrainerUI.Scripts.Globals;
 using TypingTraining.TypingTexts;
 using TypingTraining.TypingTrainers;
+using System.Threading.Tasks;
 
 namespace GodotTypingTrainerUI.Scripts.Menu
 {

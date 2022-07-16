@@ -10,21 +10,24 @@ namespace GodotTypingTrainerUI.Scripts.Menu
 
         private Button _updateTextsButton;
 
+        private AnimationPlayer _animationPlayer;
+
         public override void _Ready()
         {
-            Close();
+            _updateTextsButton = GetNode<Button>("ScrollContainer/VBoxContainer/UpdateTextsButton");
+            _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-            _updateTextsButton = GetNode<Button>("GridContainer/VBoxContainer/UpdateTextsButton");
+            Hide();
         }
 
         public void Open()
         {
-            Show();
+            _animationPlayer.Play("Open");
         }
 
         public void Close()
         {
-            Hide();
+            _animationPlayer.Play("Close");
         }
 
         private void OnUpdateTextsButton_pressed()
