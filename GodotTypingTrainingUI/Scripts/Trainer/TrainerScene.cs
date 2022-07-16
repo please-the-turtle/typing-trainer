@@ -16,6 +16,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         private CompletedPanel _completedPanel;
         private TypingInfoContainer _infoContainer;
         private Label _helperLabel;
+        private Hands _hands;
 
         public override void _Ready()
         {
@@ -40,6 +41,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
             _completedPanel = GetNode<CompletedPanel>("CompletedPanel");
             _infoContainer = GetNode<TypingInfoContainer>("TypingInfoContainer");
             _helperLabel = GetNode<Label>("HelperLabel");
+            _hands = GetNode<Hands>("Hands");
             _charactersToScroll = _scrollingCharsNumber;
         }
 
@@ -94,6 +96,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         private void OnMissesNumberChanged(object sender)
         {
             _infoContainer.UpdateMissesInfo(_trainer.MissesNumber);
+            _hands.PlayMissAnimation();
         }
 
         private async void OnTypingCompleted(object sender)

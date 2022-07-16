@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/texture_atlas.png" type="Texture" id=2]
@@ -8,10 +8,40 @@
 [ext_resource path="res://Scripts/Trainer/TypingInfoContainer.cs" type="Script" id=6]
 [ext_resource path="res://Scripts/Trainer/CompletedPanel.cs" type="Script" id=7]
 [ext_resource path="res://Scenes/PanelsAnimationPlayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Trainer/Hands.cs" type="Script" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 2, 2, 73, 166 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Miss"
+length = 0.133333
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 202, 500 ), Vector2( 197, 485 ), Vector2( 202, 500 ), Vector2( 207, 510 ), Vector2( 202, 500 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 830, 500 ), Vector2( 835, 485 ), Vector2( 830, 500 ), Vector2( 825, 510 ), Vector2( 830, 500 ) ]
+}
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -84,6 +114,7 @@ anchor_bottom = 1.0
 margin_left = -512.0
 margin_top = -600.0
 margin_right = 512.0
+script = ExtResource( 9 )
 
 [node name="LeftHand" type="Sprite" parent="Hands"]
 position = Vector2( 202, 500 )
@@ -95,6 +126,9 @@ position = Vector2( 830, 500 )
 scale = Vector2( 3, 3 )
 texture = SubResource( 1 )
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hands"]
+anims/Miss = SubResource( 10 )
 
 [node name="TypingInfoContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
