@@ -8,29 +8,33 @@ namespace GodotTypingTrainerUI.Scripts.Menu
     {
         public override void _Ready()
         {
-            base._Ready();
             UpdateItems();
         }
 
         private void UpdateItems()
         {
             Clear();
+            Text = "No one text found";
 
-            foreach (var item in GetItems())
+            var items = GetItems();
+            if (items is not null)
             {
-                AddItem(item);
-            }
+                foreach (var item in items)
+                {
+                    AddItem(item);
+                }
 
-            int lastTypingTextsindex = this.GetGlobal().ApplicationSettings.LastTypingTextsIndex;
-            if (lastTypingTextsindex < Items.Count)
-            {
-                Selected = lastTypingTextsindex;
+                int lastTypingTextsIndex = this.GetGlobal().ApplicationSettings.LastTypingTextsIndex;
+                if (lastTypingTextsIndex < Items.Count)
+                {
+                    Selected = lastTypingTextsIndex;
+                }
             }
         }
 
         private IEnumerable<string> GetItems()
         {
-            var items = new List<string>();
+            List<string> items;
 
             using (var directory = new Directory())
             {
@@ -40,6 +44,7 @@ namespace GodotTypingTrainerUI.Scripts.Menu
                     return null;
                 }
 
+                items = new List<string>();
                 string textsExtension = this.GetGlobal().ApplicationSettings.TypingTextsExtention;
                 directory.ListDirBegin(true);
                 string dirContent;
@@ -52,6 +57,7 @@ namespace GodotTypingTrainerUI.Scripts.Menu
                         items.Add(item);
                     }
                 } while (dirContent != string.Empty);
+
                 directory.ListDirEnd();
             }
 
