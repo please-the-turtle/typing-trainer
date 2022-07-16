@@ -13,6 +13,8 @@ namespace GodotTypingTrainerUI.Scripts.Menu
         private void OnPressed()
         {
             this.GetGlobal().ApplicationSettings.IsSoundsEnabled = Pressed;
+            int masterAudioBusIdx = AudioServer.GetBusIndex("Master");
+            AudioServer.SetBusMute(masterAudioBusIdx, !Pressed);
         }
     }
 }

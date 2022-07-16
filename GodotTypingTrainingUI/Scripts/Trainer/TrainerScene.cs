@@ -18,6 +18,8 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         private Label _helperLabel;
         private Hands _hands;
 
+        private TrainerSoundsPlayer _soundsPlayer;
+
         public override void _Ready()
         {
             var global = this.GetGlobal();
@@ -42,6 +44,8 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
             _infoContainer = GetNode<TypingInfoContainer>("TypingInfoContainer");
             _helperLabel = GetNode<Label>("HelperLabel");
             _hands = GetNode<Hands>("Hands");
+            _soundsPlayer = GetNode<TrainerSoundsPlayer>("SoundsPlayer");
+
             _charactersToScroll = _scrollingCharsNumber;
         }
 
@@ -96,13 +100,14 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         private void OnMissesNumberChanged(object sender)
         {
             _infoContainer.UpdateMissesInfo(_trainer.MissesNumber);
-            _hands.PlayMissAnimation();
         }
 
         private async void OnTypingCompleted(object sender)
         {
             UpdateTotalAccuracyStatistics();
             UpdateTotalSpeedStatistics();
+
+            _soundsPlayer.PlayCompletedSound();
 
             _completedPanel.Open(_trainer.TypingSpeed, _trainer.TypingAccuracy);
 
@@ -153,6 +158,11 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
                     _typingTextView.ScrollVertical++;
                     _charactersToScroll = _scrollingCharsNumber;
                 }
+            }
+            else
+            {
+                _soundsPlayer.PlayMissSound();
+                _hands.PlayMissAnimation();
             }
 
             _infoContainer.UpdateSpeedInfo(_trainer.TypingSpeed);

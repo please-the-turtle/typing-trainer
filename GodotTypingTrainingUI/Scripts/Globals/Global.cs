@@ -22,6 +22,9 @@ namespace GodotTypingTrainerUI.Scripts.Globals
             CurrentScene = root.GetChild(root.GetChildCount() - 1);
             ApplicationSettings = LoadOrCreateNew<ApplicationSettings>(ApplicationSettings.SettingsPath);
             UserStatistics = LoadOrCreateNew<UserStatistics>(ApplicationSettings.UserStatisticsPath);
+
+            int masterAudioBusIdx = AudioServer.GetBusIndex("Master");
+            AudioServer.SetBusMute(masterAudioBusIdx, !ApplicationSettings.IsSoundsEnabled);
         }
 
         public void SetGlobalParameter(string parameterName, object value)
