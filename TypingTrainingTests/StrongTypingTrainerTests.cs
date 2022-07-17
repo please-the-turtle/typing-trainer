@@ -187,11 +187,11 @@ namespace TypingTrainingTests
         [TestCaseSource(nameof(GetValidTypingTrainerTestCaseData))]
         public void TestTrainingPaused_ValidTypingTrainer_CorrectTrainingPaused(TypingTrainer trainer)
         {
-            Assert.IsTrue(trainer.TrainingPaused);
+            Assert.IsTrue(trainer.IsTrainingPaused);
             trainer.Start();
-            Assert.IsFalse(trainer.TrainingPaused);
+            Assert.IsFalse(trainer.IsTrainingPaused);
             trainer.Pause();
-            Assert.IsTrue(trainer.TrainingPaused);
+            Assert.IsTrue(trainer.IsTrainingPaused);
         }
     }
 }

@@ -19,6 +19,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\KeyboardTrainer\TypingTraining.csproj" />
+		<ProjectReference Include="..\TypingTraining\TypingTraining.csproj" />
 	</ItemGroup>
 
 </Project>

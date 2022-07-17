@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1">
+      <TreatAsUsed>true</TreatAsUsed>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KeyboardTrainer\TypingTraining.csproj" />
     <ProjectReference Include="..\Parsing\Parsing.csproj" />
+    <ProjectReference Include="..\TypingTraining\TypingTraining.csproj" />
   </ItemGroup>
 
 </Project>
