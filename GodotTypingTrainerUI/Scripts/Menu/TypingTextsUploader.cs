@@ -1,9 +1,8 @@
 using Parsing;
-using Parsing.Jokes;
-using Parsing.JacqueFresco;
 using System.Collections.Generic;
 using TypingTraining.TypingTexts;
 using GodotTypingTrainerUI.Scripts.Globals;
+using GodotTypingTrainerUI.Scripts.Parsers.RuJokes;
 
 namespace GodotTypingTrainerUI.Scripts.Menu
 {
@@ -54,16 +53,10 @@ namespace GodotTypingTrainerUI.Scripts.Menu
             List<TypingTextParsingSetup> parsers = new();
 
             TypingTextParsingSetup jokes = new(
-                "[RU] Jokes (not fun)",
-                new JokesParser(),
-                new JokesParserSettings());
+                "[RU] Cringe jokes",
+                new RuJokesParser(),
+                new RuJokesParserSettings());
             parsers.Add(jokes);
-
-            TypingTextParsingSetup fresco = new(
-                "[RU] Jacque Fresco quotes",
-                new JacqueFrescoParser(),
-                new JacqueFrescoParserSettings()
-            );
 
             return parsers;
         }

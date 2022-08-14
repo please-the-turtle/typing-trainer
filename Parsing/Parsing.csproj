@@ -13,8 +13,4 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\TypingTraining\TypingTraining.csproj" />
-	</ItemGroup>
-
 </Project>

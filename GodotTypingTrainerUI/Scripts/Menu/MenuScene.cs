@@ -4,7 +4,7 @@ using GodotTypingTrainerUI.Scripts.Globals;
 using TypingTraining.TypingTexts;
 using TypingTraining.TypingTrainers;
 using System.Threading.Tasks;
-using GodotTypingTrainerUI.Scripts.CustomTypingTextsProviders;
+using GodotTypingTrainerUI.Scripts.TypingTextsProviders;
 
 namespace GodotTypingTrainerUI.Scripts.Menu
 {

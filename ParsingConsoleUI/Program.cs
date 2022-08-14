@@ -1,8 +1,8 @@
 ﻿using Parsing;
-using Parsing.Jokes;
-using Parsing.JacqueFresco;
 using TypingTraining.TypingTexts;
 using Newtonsoft.Json;
+using ParsingConsoleUI.Parsers.Jokes;
+using ParsingConsoleUI.Parsers.JacqueFresco;
 
 string savePath = "../../../saved/";
 

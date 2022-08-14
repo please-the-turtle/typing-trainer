@@ -1,4 +1,6 @@
-﻿namespace Parsing.JacqueFresco
+﻿using Parsing;
+
+namespace ParsingConsoleUI.Parsers.JacqueFresco
 {
     public class JacqueFrescoParserSettings : IParserSettings
     {

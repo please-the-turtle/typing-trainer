@@ -1,6 +1,6 @@
 using TypingTraining.TypingTexts;
 
-namespace GodotTypingTrainerUI.Scripts.CustomTypingTextsProviders
+namespace GodotTypingTrainerUI.Scripts.TypingTextsProviders
 {
     public class ErrorTypingTextsProvider : ITypingTextsProvider
     {

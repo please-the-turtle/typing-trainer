@@ -19,4 +19,8 @@
     <ProjectReference Include="..\TypingTraining\TypingTraining.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="saved\" />
+  </ItemGroup>
+
 </Project>

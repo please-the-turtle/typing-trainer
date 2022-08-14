@@ -1,4 +1,6 @@
-﻿namespace Parsing.Jokes
+﻿using Parsing;
+
+namespace ParsingConsoleUI.Parsers.Jokes
 {
     public class JokesParserSettings : IParserSettings
     {
