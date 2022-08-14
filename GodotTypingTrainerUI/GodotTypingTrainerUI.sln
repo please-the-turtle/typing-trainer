@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypingTraining", "..\KeyboardTrainer\TypingTraining.csproj", "{E3C9F4BD-ADF5-4992-BC4E-8D8851D46FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypingTraining", "..\TypingTraining\TypingTraining.csproj", "{E3C9F4BD-ADF5-4992-BC4E-8D8851D46FBF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parsing", "..\Parsing\Parsing.csproj", "{B02EE0B7-8F8E-4F1B-8E2B-3A5B3AFA7600}"
 EndProject

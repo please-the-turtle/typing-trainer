@@ -115,7 +115,6 @@ rect_pivot_offset = Vector2( 220, 250 )
 script = ExtResource( 6 )
 
 [node name="AnimationPlayer" parent="SettingsPanel" instance=ExtResource( 11 )]
-script = null
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SettingsPanel"]
 anchor_right = 1.0
@@ -195,7 +194,6 @@ rect_pivot_offset = Vector2( 220, 250 )
 script = ExtResource( 10 )
 
 [node name="AnimationPlayer" parent="StatisticsPanel" instance=ExtResource( 11 )]
-script = null
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StatisticsPanel"]
 anchor_right = 1.0

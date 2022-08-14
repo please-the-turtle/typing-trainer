@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/texture_atlas.png" type="Texture" id=2]
@@ -12,10 +12,7 @@
 [ext_resource path="res://Audio/miss.wav" type="AudioStream" id=10]
 [ext_resource path="res://Audio/completed.wav" type="AudioStream" id=11]
 [ext_resource path="res://Scripts/Trainer/TrainerSoundsPlayer.cs" type="Script" id=12]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 2, 2, 73, 166 )
+[ext_resource path="res://Scripts/Trainer/FingerPromptPositions.cs" type="Script" id=13]
 
 [sub_resource type="Animation" id=10]
 resource_name = "Miss"
@@ -45,6 +42,10 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 830, 500 ), Vector2( 835, 485 ), Vector2( 830, 500 ), Vector2( 825, 510 ), Vector2( 830, 500 ) ]
 }
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 2, 2, 73, 166 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -118,6 +119,59 @@ margin_top = -600.0
 margin_right = 512.0
 script = ExtResource( 9 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hands"]
+anims/Miss = SubResource( 10 )
+
+[node name="FingerPromptPositions" type="Control" parent="Hands"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -600.0
+margin_right = 512.0
+script = ExtResource( 13 )
+
+[node name="RightThumbFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 748, 397 )
+scale = Vector2( 3, 3 )
+
+[node name="RightIndexFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 801, 341 )
+scale = Vector2( 3, 3 )
+
+[node name="RightMiddleFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 839, 341 )
+scale = Vector2( 3, 3 )
+
+[node name="RightRingFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 870, 349 )
+scale = Vector2( 3, 3 )
+
+[node name="RightLittleFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 903, 365 )
+scale = Vector2( 3, 3 )
+
+[node name="LeftThumbFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 284, 397 )
+scale = Vector2( 3, 3 )
+
+[node name="LeftIndexFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 226, 346 )
+scale = Vector2( 3, 3 )
+
+[node name="LeftMiddleFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 191, 345 )
+scale = Vector2( 3, 3 )
+
+[node name="LeftRingFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 160, 346 )
+scale = Vector2( 3, 3 )
+
+[node name="LeftLittleFinger" type="Position2D" parent="Hands/FingerPromptPositions"]
+position = Vector2( 130, 361 )
+scale = Vector2( 3, 3 )
+
 [node name="LeftHand" type="Sprite" parent="Hands"]
 position = Vector2( 202, 500 )
 scale = Vector2( 3, 3 )
@@ -129,8 +183,19 @@ scale = Vector2( 3, 3 )
 texture = SubResource( 1 )
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hands"]
-anims/Miss = SubResource( 10 )
+[node name="FingerPrompt" type="Label" parent="Hands"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -341.0
+margin_top = -275.0
+margin_right = -301.0
+margin_bottom = -235.0
+rect_pivot_offset = Vector2( 20, 20 )
+text = "Ъ"
+align = 1
+valign = 1
 
 [node name="TypingInfoContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5

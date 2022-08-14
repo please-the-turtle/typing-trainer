@@ -19,7 +19,7 @@ namespace TypingTraining.FingerPointer.FingersLayouts
             _charsets.Add(Fingers.LeftLittle, "azq1AZQ!фяйФЯЙёЁ");
 
             _charsets.Add(Fingers.RightThumb, " ");
-            _charsets.Add(Fingers.RightIndex, "jmuhny67JMUHNYоьгОЬГ");
+            _charsets.Add(Fingers.RightIndex, "jmuhny67JMUHNYоьгрнтРНТОЬГ");
             _charsets.Add(Fingers.RightMiddle, "ki8KIлбшЛБШ");
             _charsets.Add(Fingers.RightRing, "lo9LOдющДЮЩ(");
             _charsets.Add(Fingers.RightLittle, "p0P-_=+)жзхъэЖЗХЪЭ");

@@ -39,11 +39,16 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
             _typingTextView = GetNode<TextEdit>("TextPanel/TypingTextView");
             _typingTextView.Text = _trainer.CurrentTypingText.Content;
             _typingTextView.DrawSpaces = global.ApplicationSettings.DrawSpaces;
+
             _pausePanel = GetNode<PausePanel>("PausePanel");
             _completedPanel = GetNode<CompletedPanel>("CompletedPanel");
             _infoContainer = GetNode<TypingInfoContainer>("TypingInfoContainer");
             _helperLabel = GetNode<Label>("HelperLabel");
+
             _hands = GetNode<Hands>("Hands");
+            char nextChar = GetNextTypeChar();
+            _hands.UpdateFingerPrompt(nextChar);
+
             _soundsPlayer = GetNode<TrainerSoundsPlayer>("SoundsPlayer");
 
             _charactersToScroll = _scrollingCharsNumber;
@@ -172,6 +177,19 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         private void OnTypingCursorPositionChanged(object sender)
         {
             _typingTextView.Select(0, 0, 0, _trainer.TypingCursorPosition);
+
+            char nextChar = GetNextTypeChar();
+            _hands.UpdateFingerPrompt(nextChar);
+        }
+
+        private char GetNextTypeChar()
+        {
+            if (_trainer.TypingCursorPosition >= _trainer.CurrentTypingText.Content.Length)
+            {
+                return '\0';
+            }
+
+            return _trainer.CurrentTypingText.Content[_trainer.TypingCursorPosition];
         }
 
         private void OnTypingTextChanged(object sender)

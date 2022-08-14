@@ -4,6 +4,7 @@ using GodotTypingTrainerUI.Scripts.Globals;
 using TypingTraining.TypingTexts;
 using TypingTraining.TypingTrainers;
 using System.Threading.Tasks;
+using GodotTypingTrainerUI.Scripts.CustomTypingTextsProviders;
 
 namespace GodotTypingTrainerUI.Scripts.Menu
 {
@@ -28,8 +29,12 @@ namespace GodotTypingTrainerUI.Scripts.Menu
             SetChildrenDisabled(_controlsContainer);
 
             Global global = this.GetGlobal();
-            global.ApplicationSettings.LastTypingTextsIndex = _textsOptionButton.Selected;
-            await global.SaveApplicationSettingsAsync();
+            int selectedTextIndex = _textsOptionButton.Selected;
+            if (selectedTextIndex >= 0)
+            {
+                global.ApplicationSettings.LastTypingTextsIndex = selectedTextIndex;
+                await global.SaveApplicationSettingsAsync();
+            }
 
             TypingTrainer trainer = await GetTypingTrainerAsync();
             global.SetGlobalParameter("trainer", trainer);
@@ -37,9 +42,9 @@ namespace GodotTypingTrainerUI.Scripts.Menu
             global.GotoScene("res://Scenes/Trainer.tscn");
         }
 
-        private void SetChildrenDisabled(Node controlsContainer)
+        private void SetChildrenDisabled(Node node)
         {
-            foreach(var item in controlsContainer.GetChildren())
+            foreach (var item in node.GetChildren())
             {
                 if (item is BaseButton button)
                 {
@@ -57,10 +62,20 @@ namespace GodotTypingTrainerUI.Scripts.Menu
 
         private TypingTrainer GetTypingTrainer()
         {
-            string textsFilePath = GetLastTypingTextPath();
-            GodotDataLoader<TypingText[]> loader = new GodotDataLoader<TypingText[]>(textsFilePath);
-            TypingText[] texts = loader.LoadData();
-            RandomTypingTextProvider provider = new RandomTypingTextProvider(texts);
+            ITypingTextsProvider provider;
+
+            try
+            {
+                string textsFilePath = GetLastTypingTextPath();
+                GodotDataLoader<TypingText[]> loader = new GodotDataLoader<TypingText[]>(textsFilePath);
+                TypingText[] texts = loader.LoadData();
+                provider = new RandomTypingTextProvider(texts);
+            }
+            catch
+            {
+                this.GetGlobal().ApplicationSettings.LastTypingTextsIndex = 0;
+                provider = new ErrorTypingTextsProvider();  
+            }
 
             return new StrongTypingTrainer(provider);
         }

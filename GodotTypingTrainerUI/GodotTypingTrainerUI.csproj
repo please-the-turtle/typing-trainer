@@ -9,7 +9,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\KeyboardTrainer\TypingTraining.csproj" />
+		<ProjectReference Include="..\TypingTraining\TypingTraining.csproj" />
 		<ProjectReference Include="..\Parsing\Parsing.csproj" />
 	</ItemGroup>
 	<ItemGroup>
