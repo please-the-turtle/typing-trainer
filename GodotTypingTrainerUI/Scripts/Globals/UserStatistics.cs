@@ -10,5 +10,8 @@ namespace GodotTypingTrainerUI.Scripts.Globals
 
         [JsonProperty("totalAccuracy")]
         public float TotalAccuracy { get; set; } = 0f;
+
+        [JsonProperty("writtenTextsNumber")]
+        public int WrittenTextsNumber {get; set; } = 0;
     }
 }

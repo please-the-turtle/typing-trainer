@@ -181,7 +181,6 @@ align = 1
 valign = 1
 
 [node name="StatisticsPanel" type="Panel" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -211,16 +210,22 @@ rect_min_size = Vector2( 400, 320 )
 alignment = 1
 
 [node name="SpeedLabel" type="Label" parent="StatisticsPanel/ScrollContainer/VBoxContainer"]
-margin_top = 115.0
+margin_top = 89.0
 margin_right = 400.0
-margin_bottom = 152.0
+margin_bottom = 126.0
 text = "AVG speed: 0 ch/min"
 
 [node name="AccuracyLabel" type="Label" parent="StatisticsPanel/ScrollContainer/VBoxContainer"]
-margin_top = 167.0
+margin_top = 141.0
 margin_right = 400.0
-margin_bottom = 204.0
+margin_bottom = 178.0
 text = "AVG accuracy: 0%"
+
+[node name="TextsWrittenLabel" type="Label" parent="StatisticsPanel/ScrollContainer/VBoxContainer"]
+margin_top = 193.0
+margin_right = 400.0
+margin_bottom = 230.0
+text = "Texts written: 0"
 
 [node name="CloseButton" type="Button" parent="StatisticsPanel"]
 anchor_right = 1.0

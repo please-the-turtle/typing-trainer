@@ -111,6 +111,7 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
         {
             UpdateTotalAccuracyStatistics();
             UpdateTotalSpeedStatistics();
+            this.GetGlobal().UserStatistics.WrittenTextsNumber++;
 
             _soundsPlayer.PlayCompletedSound();
 
@@ -124,11 +125,9 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
             var statistics = this.GetGlobal().UserStatistics;
             float oldTotalAccuracy = statistics.TotalAccuracy;
             float newTotalAccuracy = _trainer.TypingAccuracy;
+            int writtenTextsNumber = statistics.WrittenTextsNumber;
 
-            if (oldTotalAccuracy > 0)
-            {
-                newTotalAccuracy = (oldTotalAccuracy + _trainer.TypingAccuracy) / 2;
-            }
+            newTotalAccuracy = (oldTotalAccuracy * writtenTextsNumber + _trainer.TypingAccuracy) / (writtenTextsNumber + 1);
 
             statistics.TotalAccuracy = newTotalAccuracy;
         }
@@ -138,11 +137,9 @@ namespace GodotTypingTrainerUI.Scripts.Trainer
             var statistics = this.GetGlobal().UserStatistics;
             float oldTotalSpeed = statistics.TotalSpeed;
             float newTotalSpeed = _trainer.TypingSpeed;
+            int writtenTextsNumber = statistics.WrittenTextsNumber;
 
-            if (oldTotalSpeed > 0)
-            {
-                newTotalSpeed = (oldTotalSpeed + _trainer.TypingSpeed) / 2;
-            }
+            newTotalSpeed = (oldTotalSpeed * writtenTextsNumber + _trainer.TypingSpeed) / (writtenTextsNumber + 1);
 
             statistics.TotalSpeed = newTotalSpeed;
         }
