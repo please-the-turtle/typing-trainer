@@ -41,7 +41,7 @@ namespace GodotTypingTrainerUI.Scripts.Menu
             if (parsedTexts is not null && parsedTexts.Count != 0)
             {
                 GodotDataSaver saver = new(filePath);
-                var b = saver.TrySaveData(parsedTexts);
+                saver.TrySaveData(parsedTexts);
             }
         }
 

@@ -12,8 +12,12 @@ config_version=4
 
 config/name="GodotTypingTrainerUI"
 run/main_scene="res://Scenes/Menu.tscn"
+boot_splash/image="res://splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.866667, 0.894118, 0.941176, 1 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -60,10 +64,6 @@ ui_start={
 [mono]
 
 project/auto_update_project=false
-
-[network]
-
-ssl/certificates="res://ssl/ca-certificates.crt"
 
 [physics]
 
